@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferienhaus Pflug</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Dancing+Script:wght@400;600&display=swap">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="./ds-bundle.js"></script>
+<script type="text/babel" src="./components/ios-frame.jsx"></script>
+<script type="text/babel" src="./components/android-frame.jsx"></script>
+<style>
+  :root {
+    /* ── Wood Scale (brand core) ── */
+    --wood-50:  oklch(96% 0.025 78);
+    --wood-100: oklch(91% 0.055 76);
+    --wood-150: oklch(88% 0.070 75);
+    --wood-200: oklch(84% 0.085 73);
+    --wood-300: oklch(74% 0.110 69);
+    --wood-400: oklch(63% 0.110 63);
+    --wood-500: oklch(52% 0.095 56);
+    --wood-600: oklch(42% 0.085 50);
+    --wood-700: oklch(33% 0.070 45);
+    --wood-800: oklch(24% 0.050 42);
+    --wood-900: oklch(16% 0.035 38);
+
+    /* ── Warm Neutrals ── */
+    --neutral-50:  oklch(98.5% 0.008 82);
+    --neutral-100: oklch(95.5% 0.018 80);
+    --neutral-200: oklch(90%   0.030 76);
+    --neutral-300: oklch(82%   0.040 73);
+    --neutral-400: oklch(70%   0.040 70);
+    --neutral-500: oklch(57%   0.035 67);
+    --neutral-600: oklch(44%   0.030 63);
+    --neutral-700: oklch(34%   0.025 58);
+    --neutral-800: oklch(24%   0.020 54);
+    --neutral-900: oklch(14%   0.015 50);
+
+    /* ── Accent: Olive ── */
+    --olive-100: oklch(86%  0.065 122);
+    --olive-300: oklch(72%  0.090 120);
+    --olive-500: oklch(53%  0.095 116);
+    --olive-700: oklch(38%  0.078 112);
+    --olive-900: oklch(25%  0.055 108);
+
+    /* ── Charcoal ── */
+    --charcoal-300: oklch(48%  0.018 262);
+    --charcoal-500: oklch(32%  0.018 262);
+    --charcoal-700: oklch(20%  0.015 262);
+    --charcoal-900: oklch(12%  0.012 262);
+
+    /* ── Semantic Aliases ── */
+    --color-primary:           var(--wood-400);
+    --color-primary-hover:     var(--wood-500);
+    --color-primary-active:    var(--wood-600);
+    --color-primary-light:     var(--wood-100);
+    --color-primary-text:      var(--neutral-50);
+
+    --color-accent:            var(--olive-500);
+    --color-accent-hover:      var(--olive-700);
+    --color-accent-light:      var(--olive-100);
+    --color-accent-text:       var(--neutral-50);
+
+    --color-bg:                var(--neutral-100);
+    --color-bg-secondary:      var(--neutral-200);
+    --color-bg-inverse:        var(--wood-800);
+    --color-surface:           var(--neutral-50);
+    --color-surface-raised:    #ffffff;
+    --color-surface-wood:      var(--wood-100);
+
+    --color-text:              var(--neutral-900);
+    --color-text-secondary:    var(--neutral-600);
+    --color-text-muted:        var(--neutral-500);
+    --color-text-inverse:      var(--neutral-100);
+    --color-text-on-wood:      var(--wood-800);
+
+    --color-border:            var(--neutral-300);
+    --color-border-light:      var(--neutral-200);
+    --color-border-strong:     var(--neutral-400);
+
+    /* ── Font Families ── */
+    --font-display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+    --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-script:  'Dancing Script', cursive;
+
+    /* ── Type Scale ── */
+    --text-xs:   0.75rem;
+    --text-sm:   0.875rem;
+    --text-base: 1rem;
+    --text-lg:   1.125rem;
+    --text-xl:   1.25rem;
+    --text-2xl:  1.5rem;
+    --text-3xl:  1.875rem;
+    --text-4xl:  2.25rem;
+    --text-5xl:  3rem;
+    --text-6xl:  3.75rem;
+    --text-7xl:  4.5rem;
+    --text-8xl:  6rem;
+
+    --text-display-sm:  2.5rem;
+    --text-display-md:  3.5rem;
+    --text-display-lg:  4.75rem;
+    --text-display-xl:  6.25rem;
+
+    /* ── Font Weights ── */
+    --weight-light:    300;
+    --weight-normal:   400;
+    --weight-medium:   500;
+    --weight-semibold: 600;
+    --weight-bold:     700;
+
+    /* ── Line Heights ── */
+    --leading-none:     1;
+    --leading-tight:    1.15;
+    --leading-snug:     1.35;
+    --leading-normal:   1.55;
+    --leading-relaxed:  1.7;
+    --leading-loose:    2;
+
+    /* ── Letter Spacing ── */
+    --tracking-tighter: -0.03em;
+    --tracking-tight:   -0.01em;
+    --tracking-normal:   0em;
+    --tracking-wide:     0.04em;
+    --tracking-wider:    0.08em;
+    --tracking-widest:   0.18em;
+    --tracking-ultra:    0.28em;
+
+    /* ── Spacing ── */
+    --space-px:  1px;
+    --space-0:   0;
+    --space-1:   0.25rem;
+    --space-2:   0.5rem;
+    --space-3:   0.75rem;
+    --space-4:   1rem;
+    --space-5:   1.25rem;
+    --space-6:   1.5rem;
+    --space-7:   1.75rem;
+    --space-8:   2rem;
+    --space-10:  2.5rem;
+    --space-12:  3rem;
+    --space-14:  3.5rem;
+    --space-16:  4rem;
+    --space-20:  5rem;
+    --space-24:  6rem;
+    --space-28:  7rem;
+    --space-32:  8rem;
+    --space-40:  10rem;
+    --space-48:  12rem;
+    --space-56:  14rem;
+    --space-64:  16rem;
+
+    --gap-xs:    var(--space-2);
+    --gap-sm:    var(--space-3);
+    --gap-md:    var(--space-4);
+    --gap-lg:    var(--space-6);
+    --gap-xl:    var(--space-8);
+    --gap-2xl:   var(--space-12);
+    --gap-3xl:   var(--space-16);
+    --gap-4xl:   var(--space-24);
+
+    --padding-card:     var(--space-6);
+    --padding-section:  clamp(var(--space-12), 6vw, var(--space-24));
+    --padding-page:     clamp(var(--space-6), 5vw, var(--space-16));
+
+    --container-sm:  640px;
+    --container-md:  768px;
+    --container-lg:  1024px;
+    --container-xl:  1280px;
+    --container-2xl: 1440px;
+
+    /* ── Border Radii ── */
+    --radius-none:  0;
+    --radius-xs:    2px;
+    --radius-sm:    4px;
+    --radius-md:    6px;
+    --radius-lg:    10px;
+    --radius-xl:    16px;
+    --radius-2xl:   24px;
+    --radius-full:  9999px;
+
+    /* ── Shadows ── */
+    --shadow-xs:    0 1px 3px rgba(45,25,10,0.07);
+    --shadow-sm:    0 2px 8px rgba(45,25,10,0.09), 0 1px 3px rgba(45,25,10,0.06);
+    --shadow-md:    0 4px 16px rgba(45,25,10,0.11), 0 2px 6px rgba(45,25,10,0.07);
+    --shadow-lg:    0 8px 28px rgba(45,25,10,0.14), 0 3px 10px rgba(45,25,10,0.08);
+    --shadow-xl:    0 16px 48px rgba(45,25,10,0.17), 0 6px 18px rgba(45,25,10,0.10);
+    --shadow-2xl:   0 24px 64px rgba(45,25,10,0.22), 0 8px 24px rgba(45,25,10,0.12);
+    --shadow-inner: inset 0 2px 6px rgba(45,25,10,0.12);
+
+    /* ── Transitions ── */
+    --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+    --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --transition-fast:   120ms var(--ease-out);
+    --transition-base:   200ms var(--ease-out);
+    --transition-slow:   350ms var(--ease-out);
+    --transition-spring: 400ms var(--ease-spring);
+
+    /* ── Wood Grain Textures ── */
+    --texture-wood-birch:
+      repeating-linear-gradient(87.5deg, transparent 0, transparent 2px, rgba(180,140,70,0.05) 2px, rgba(180,140,70,0.05) 3px, transparent 3px, transparent 9px, rgba(160,120,55,0.03) 9px, rgba(160,120,55,0.03) 10px),
+      repeating-linear-gradient(92deg, transparent 0, transparent 18px, rgba(140,100,40,0.02) 18px, rgba(140,100,40,0.02) 19px),
+      linear-gradient(180deg, var(--wood-50) 0%, var(--wood-100) 45%, var(--wood-50) 100%);
+
+    --texture-wood-oak:
+      repeating-linear-gradient(87deg, transparent 0, transparent 2px, rgba(110,70,20,0.18) 2px, rgba(110,70,20,0.18) 3px, transparent 3px, transparent 8px, rgba(90,55,12,0.12) 8px, rgba(90,55,12,0.12) 9px, transparent 9px, transparent 14px, rgba(70,40,10,0.08) 14px, rgba(70,40,10,0.08) 15px),
+      repeating-linear-gradient(92.5deg, transparent 0, transparent 18px, rgba(80,48,10,0.14) 18px, rgba(80,48,10,0.14) 19px, transparent 19px, transparent 45px, rgba(100,60,15,0.08) 45px, rgba(100,60,15,0.08) 46px),
+      repeating-linear-gradient(88.5deg, transparent 0, transparent 35px, rgba(60,35,8,0.06) 35px, rgba(60,35,8,0.06) 37px),
+      linear-gradient(180deg, var(--wood-300) 0%, var(--wood-400) 55%, var(--wood-300) 100%);
+
+    --texture-wood-oak-light:
+      repeating-linear-gradient(88.5deg, transparent 0, transparent 2px, rgba(120,85,45,0.06) 2px, rgba(120,85,45,0.06) 3px, transparent 3px, transparent 14px, rgba(100,70,35,0.03) 14px, rgba(100,70,35,0.03) 15px),
+      repeating-linear-gradient(91deg, transparent 0, transparent 26px, rgba(90,60,25,0.02) 26px, rgba(90,60,25,0.02) 27px),
+      linear-gradient(180deg, var(--wood-150) 0%, var(--wood-200) 50%, var(--wood-150) 100%);
+
+    --texture-wood-dark:
+      repeating-linear-gradient(88deg, transparent 0, transparent 4px, rgba(40,20,5,0.10) 4px, rgba(40,20,5,0.10) 5px, transparent 5px, transparent 16px, rgba(30,14,3,0.06) 16px, rgba(30,14,3,0.06) 17px),
+      linear-gradient(180deg, var(--wood-600) 0%, var(--wood-700) 60%, var(--wood-600) 100%);
+
+    /* ── Overlays ── */
+    --overlay-light:  rgba(250,246,240,0.85);
+    --overlay-dark:   rgba(20,12,6,0.55);
+    --overlay-wood:   rgba(80,50,20,0.45);
+
+    /* ── Blur ── */
+    --blur-sm:  blur(4px);
+    --blur-md:  blur(12px);
+    --blur-lg:  blur(24px);
+
+    /* ── Borders ── */
+    --border-thin:   1px solid var(--color-border);
+    --border-base:   1.5px solid var(--color-border);
+    --border-thick:  2px solid var(--color-border-strong);
+    --border-wood:   2px solid var(--wood-200);
+  }
+
+  /* ── Base reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-normal); line-height: var(--leading-normal); color: var(--color-text); background-color: var(--color-bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; }
+  input, button, textarea, select { font: inherit; }
+  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; text-wrap: pretty; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: var(--weight-light); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--color-text); }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; border: none; background: none; font: inherit; }
+  ul, ol { list-style: none; }
+
+  html { scroll-behavior: auto; }
+  body { margin: 0; overflow-x: hidden; }
+  input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.5; cursor: pointer; }
+  ::placeholder { color: var(--neutral-400); }
+  * { box-sizing: border-box; }
+
+  /* ── Device Toggle Button ── */
+  #device-toggle {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    gap: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  #device-toggle button {
+    padding: 7px 14px;
+    font-size: 11px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    color: var(--neutral-700);
+  }
+  #device-toggle button:active {
+    transform: scale(0.98);
+  }
+  #device-toggle button.active {
+    background: var(--color-primary);
+    color: white;
+  }
+  #device-toggle button:hover:not(.active) { background: var(--neutral-200); }
+
+  /* ── Desktop mode (default) ── */
+  html.view-default #device-toggle { display: flex; }
+
+  /* ── Mobile Mode (iOS/Android): Simple viewport narrowing ── */
+  html.view-ios body,
+  html.view-android body {
+    margin: 0 auto;
+    padding: 0;
+    width: 375px;
+    overflow: auto;
+    background: white;
+  }
+  html.view-android body {
+    width: 360px;
+  }
+  /* Container wrappers pass through — root renders directly */
+  html.view-ios #device-stage,
+  html.view-android #device-stage,
+  html.view-ios #device-bezel,
+  html.view-android #device-bezel,
+  html.view-ios #bezel-screen,
+  html.view-android #bezel-screen {
+    display: contents !important;
+  }
+  /* Hide only the phone chrome (notch, home bar) */
+  html.view-ios #bezel-chrome-top,
+  html.view-android #bezel-chrome-top,
+  html.view-ios #bezel-chrome-bottom,
+  html.view-android #bezel-chrome-bottom {
+    display: none !important;
+  }
+  html.view-ios #root,
+  html.view-android #root {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 8px;
+    z-index: 9999;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  #device-toggle button {
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+  }
+  #device-toggle button.active {
+    background: var(--color-primary);
+    color: white;
+  }
+  #device-toggle button:hover:not(.active) { background: var(--neutral-200); }
+
+  /* ── Wrapper pass-through (all modes) ── */
+  #device-stage { display: contents; }
+  #device-bezel { display: contents; }
+  #bezel-chrome-top, #bezel-chrome-bottom { display: none; }
+  #bezel-screen { display: contents; }
+
+  /* ── Mobile Mode (iOS/Android): narrow the viewport, content scrolls normally ── */
+  html.view-ios body,
+  html.view-android body {
+    margin: 0 auto;
+    padding: 0;
+    width: 390px;
+    max-width: 390px;
+    overflow-x: hidden;
+    background: white;
+    box-shadow: 0 0 0 1px var(--neutral-200);
+  }
+  html.view-android body {
+    width: 384px;
+    max-width: 384px;
+  }
+  /* Force every multi-column grid to a single column on mobile */
+  html.view-ios [style*="grid-template-columns"],
+  html.view-android [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  /* Tighten oversized section padding so content isn't squeezed */
+  html.view-ios [style*="padding-section"],
+  html.view-android [style*="padding-section"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* Constrain the fixed header to the mobile column width */
+  html.view-ios body > #device-stage header,
+  html.view-android body > #device-stage header,
+  html.view-ios body header,
+  html.view-android body header {
+    left: 50% !important;
+    right: auto !important;
+    width: 390px !important;
+    transform: translateX(-50%) !important;
+  }
+  html.view-android body header {
+    width: 384px !important;
+  }
+
+  /* ── Echte Responsive-Breakpoints (Produktion) ── */
+  @media (max-width: 760px) {
+    [style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+    [style*="padding-section"] {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="device-stage">
+  <div id="device-bezel">
+    <div id="bezel-chrome-top">
+      <div class="notch"></div>
+      <div class="punch-hole"></div>
+    </div>
+    <div id="bezel-screen">
+      <div id="root"></div>
+    </div>
+    <div id="bezel-chrome-bottom">
+      <div class="nav-btn" style="width:24px;height:24px;border-radius:4px;"></div>
+      <div class="nav-btn" style="width:36px;height:5px;"></div>
+      <div class="nav-btn" style="width:24px;height:24px;border-radius:50%;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Icons ─── -->
+<script type="text/babel">
+const Ico = ({ d, d2, d3, size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    {d  && <path d={d}/>}
+    {d2 && <path d={d2}/>}
+    {d3 && <path d={d3}/>}
+  </svg>
+);
+const IcoWifi     = ({s}) => <Ico size={s} d="M5 12.55a11 11 0 0 1 14.08 0" d2="M1.42 9a16 16 0 0 1 21.16 0" d3="M8.53 16.11a6 6 0 0 1 6.95 0"/>;
+const IcoCar      = ({s}) => <Ico size={s} d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h8l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" d2="M7 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0M13 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>;
+const IcoKitchen  = ({s}) => <Ico size={s} d="M6 2v20M18 2v20M2 12h20M2 7h4M18 7h4M2 17h4M18 17h4"/>;
+const IcoBath     = ({s}) => <Ico size={s} d="M9 6V2M15 6V2M2 10h20v4a8 8 0 0 1-8 8 8 8 0 0 1-8-8v-4z" d2="M6.5 2C5 2 4 3.1 4 4.5S5 7 6.5 7"/>;
+const IcoTv       = ({s}) => <Ico size={s} d="M2 7h20v15H2z" d2="M17 2l-5 5-5-5"/>;
+const IcoBed      = ({s}) => <Ico size={s} d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20" d2="M6 8v4M10 8v4"/>;
+const IcoMapPin   = ({s}) => <Ico size={s} d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" d2="M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>;
+const IcoMail     = ({s}) => <Ico size={s} d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" d2="M22 6l-10 7L2 6"/>;
+const IcoPhone    = ({s}) => <Ico size={s} d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>;
+const IcoPillow   = ({s}) => <Ico size={s} d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7z" d2="M7 3v18M17 3v18"/>;
+Object.assign(window, { IcoWifi, IcoCar, IcoKitchen, IcoBath, IcoTv, IcoBed, IcoMapPin, IcoMail, IcoPhone, IcoPillow });
+</script>
+
+<!-- ─── Header ─── -->
+<script type="text/babel">
+const { Button } = window.FerienhausPflugDesignSystem_14ec5f;
+
+function SiteHeader({ scrollTo }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [active, setActive] = React.useState('wohnungen');
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  React.useEffect(() => {
+    const screen = document.getElementById('bezel-screen');
+    const target = (screen && screen.scrollHeight > screen.clientHeight) ? screen : window;
+    const fn = () => setScrolled((target === screen ? screen.scrollTop : window.scrollY) > 80);
+    target.addEventListener('scroll', fn);
+    return () => target.removeEventListener('scroll', fn);
+  }, []);
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 760px)');
+    const check = () => {
+      setIsMobile(mq.matches);
+      if (!mq.matches) setMenuOpen(false);
+    };
+    check();
+    mq.addEventListener('change', check);
+    return () => mq.removeEventListener('change', check);
+  }, []);
+
+  const headerStyle = {
+    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+    background: scrolled ? 'rgba(253,250,246,0.96)' : 'transparent',
+    backdropFilter: scrolled ? 'blur(12px)' : 'none',
+    boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
+    transition: 'background 300ms ease, box-shadow 300ms ease',
+    borderBottom: scrolled ? '1px solid var(--neutral-200)' : 'none',
+  };
+  const innerStyle = {
+    maxWidth: 'var(--container-xl)', margin: '0 auto',
+    padding: '0 var(--padding-page)',
+    height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+  };
+  const logoStyle = {
+    fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '1.5rem',
+    letterSpacing: '0.02em', color: scrolled ? 'var(--wood-800)' : 'white',
+    cursor: 'pointer', userSelect: 'none', transition: 'color 300ms',
+  };
+  const navStyle = {
+    display: 'flex', gap: 'var(--gap-xl)', alignItems: 'center',
+  };
+  const linkStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)',
+    fontWeight: 'var(--weight-medium)', letterSpacing: 'var(--tracking-wider)',
+    textTransform: 'uppercase', cursor: 'pointer', transition: 'all 200ms ease',
+    color: scrolled ? 'var(--neutral-700)' : 'rgba(255,255,255,0.88)',
+    border: 'none', background: 'none', padding: '8px 0', position: 'relative',
+  };
+
+  const nav = [
+    { label: 'Wohnung', id: 'wohnungen' },
+    { label: 'Ausstattung', id: 'ausstattung' },
+    { label: 'Galerie', id: 'galerie' },
+    { label: 'Kontakt', id: 'kontakt' },
+  ];
+
+  return (
+    <header style={headerStyle}>
+      <div style={innerStyle}>
+        <span style={logoStyle} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          Ferienhaus Pflug
+        </span>
+        {!isMobile && (
+          <nav style={navStyle}>
+            {nav.map(n => (
+              <button key={n.id} style={{...linkStyle, color: active === n.id ? 'var(--color-primary)' : linkStyle.color, borderBottom: active === n.id ? '2px solid var(--color-primary)' : 'none', paddingBottom: active === n.id ? '6px' : '8px'}}
+                onMouseEnter={e => {
+                  if (active !== n.id) e.target.style.color = 'var(--color-primary)';
+                }}
+                onMouseLeave={e => {
+                  if (active !== n.id) e.target.style.color = scrolled ? 'var(--neutral-700)' : 'rgba(255,255,255,0.88)';
+                }}
+                onClick={() => { setActive(n.id); scrollTo(n.id); }}>{n.label}</button>
+            ))}
+          </nav>
+        )}
+        {isMobile && (
+          <button aria-label="Menü" onClick={() => setMenuOpen(o => !o)}
+            style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '5px', width: '40px', height: '40px', padding: '8px', background: 'none', border: 'none', cursor: 'pointer' }}>
+            <span style={{ display: 'block', height: '2px', width: '100%', background: scrolled ? 'var(--wood-800)' : 'white', borderRadius: '2px', transition: 'transform 250ms ease, opacity 250ms ease', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }}></span>
+            <span style={{ display: 'block', height: '2px', width: '100%', background: scrolled ? 'var(--wood-800)' : 'white', borderRadius: '2px', transition: 'opacity 200ms ease', opacity: menuOpen ? 0 : 1 }}></span>
+            <span style={{ display: 'block', height: '2px', width: '100%', background: scrolled ? 'var(--wood-800)' : 'white', borderRadius: '2px', transition: 'transform 250ms ease, opacity 250ms ease', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }}></span>
+          </button>
+        )}
+      </div>
+      {isMobile && (
+        <div style={{ overflow: 'hidden', maxHeight: menuOpen ? '320px' : '0', transition: 'max-height 300ms ease', background: 'rgba(253,250,246,0.98)', backdropFilter: 'blur(12px)', borderBottom: menuOpen ? '1px solid var(--neutral-200)' : 'none', boxShadow: menuOpen ? 'var(--shadow-md)' : 'none' }}>
+          <nav style={{ display: 'flex', flexDirection: 'column', padding: menuOpen ? '8px 0' : '0' }}>
+            {nav.map(n => (
+              <button key={n.id} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-medium)', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', textAlign: 'left', cursor: 'pointer', color: active === n.id ? 'var(--color-primary)' : 'var(--neutral-700)', background: 'none', border: 'none', borderLeft: active === n.id ? '3px solid var(--color-primary)' : '3px solid transparent', padding: '14px 24px' }}
+                onClick={() => { setActive(n.id); scrollTo(n.id); setMenuOpen(false); }}>{n.label}</button>
+            ))}
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
+Object.assign(window, { SiteHeader });
+</script>
+
+<!-- ─── Hero ─── -->
+<script type="text/babel">
+const { Button: Btn } = window.FerienhausPflugDesignSystem_14ec5f;
+
+function SiteHero({ scrollTo }) {
+  const [arrival, setArrival] = React.useState('');
+  const [departure, setDeparture] = React.useState('');
+  const [guests, setGuests] = React.useState('2');
+
+  const heroStyle = {
+    position: 'relative', height: 'min(100vh, 680px)', minHeight: '520px',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    overflow: 'hidden',
+  };
+  const bgStyle = {
+    position: 'absolute', inset: 0,
+    backgroundImage: 'url(./assets/photos/kitchen.jpeg)',
+    backgroundSize: 'cover', backgroundPosition: 'center 40%',
+    transform: 'scale(1.04)',
+  };
+  const overlayStyle = {
+    position: 'absolute', inset: 0,
+    background: 'linear-gradient(180deg, rgba(15,8,3,0.52) 0%, rgba(15,8,3,0.62) 60%, rgba(15,8,3,0.72) 100%)',
+  };
+  const contentStyle = {
+    position: 'relative', textAlign: 'center', padding: '0 20px',
+    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px',
+    maxWidth: '760px',
+  };
+  const eyebrowStyle = {
+    fontFamily: 'var(--font-script)', fontSize: '1.8rem', color: 'var(--wood-200)',
+    lineHeight: 1, letterSpacing: '0.01em',
+  };
+  const headlineStyle = {
+    fontFamily: 'var(--font-display)', fontWeight: 300,
+    fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95,
+    letterSpacing: '-0.02em', color: 'white',
+  };
+  const subtitleStyle = {
+    fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '1.1rem',
+    color: 'rgba(255,255,255,0.75)', letterSpacing: '0.04em',
+    maxWidth: '460px', lineHeight: 1.6,
+  };
+  const widgetStyle = {
+    display: 'flex', gap: '8px', alignItems: 'flex-end', flexWrap: 'wrap',
+    justifyContent: 'center', marginTop: '8px',
+    background: 'rgba(250,246,240,0.10)', backdropFilter: 'blur(8px)',
+    border: '1px solid rgba(255,255,255,0.18)', borderRadius: 'var(--radius-md)',
+    padding: '16px 20px',
+  };
+  const fieldStyle = { display: 'flex', flexDirection: 'column', gap: '5px' };
+  const wLabel = {
+    fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 500,
+    letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)',
+  };
+  const wInput = {
+    fontFamily: 'var(--font-body)', fontSize: '14px', color: 'white',
+    background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.22)',
+    borderRadius: 'var(--radius-sm)', padding: '9px 12px', outline: 'none',
+    minWidth: '130px', colorScheme: 'dark',
+  };
+
+  return (
+    <section style={heroStyle}>
+      <div style={bgStyle}></div>
+      <div style={overlayStyle}></div>
+      <div style={contentStyle}>
+        <span style={eyebrowStyle}>Ihr Zuhause auf Zeit</span>
+        <h1 style={headlineStyle}>Ferienhaus Pflug</h1>
+        <p style={subtitleStyle}>Gemütliche Zimmer und Wohnung in ruhiger Lage. Modern eingerichtet, mit allem was du brauchst.</p>
+        <div style={widgetStyle}>
+          <div style={fieldStyle}>
+            <label style={wLabel}>Anreise</label>
+            <input type="date" value={arrival} onChange={e => setArrival(e.target.value)} style={wInput} />
+          </div>
+          <div style={fieldStyle}>
+            <label style={wLabel}>Abreise</label>
+            <input type="date" value={departure} onChange={e => setDeparture(e.target.value)} style={wInput} />
+          </div>
+          <div style={fieldStyle}>
+            <label style={wLabel}>Personen</label>
+            <select value={guests} onChange={e => setGuests(e.target.value)} style={{...wInput, minWidth: '100px'}}>
+              {[1,2,3,4,5,6].map(n => <option key={n} value={n}>{n} Person{n > 1 ? 'en' : ''}</option>)}
+            </select>
+          </div>
+          <Btn variant="dark" size="md" onClick={() => scrollTo('wohnungen')}>
+            Verfügbarkeit prüfen
+          </Btn>
+        </div>
+      </div>
+
+    </section>
+  );
+}
+Object.assign(window, { SiteHero });
+</script>
+
+<!-- ─── Rooms Section ─── -->
+<script type="text/babel">
+const { RoomCard } = window.FerienhausPflugDesignSystem_14ec5f;
+
+const room = {
+  id: 1,
+  name: 'Ferienhaus Pflug',
+  desc: 'Gem\u00FCtliche Wohnung mit Holzb\u00F6den, eigenem Bad, vollausgestatteter K\u00FCche und einem Wohnbereich mit Sofa.',
+  capacity: 4,
+  beds: 2,
+  price: 65,
+  img: './assets/photos/bedroom-twin-c.jpeg',
+  amenities: ['WLAN', 'K\u00FCche', 'Bad', 'TV', 'Parkplatz'],
+  avail: true,
+};
+
+function RoomsSection({ scrollTo }) {
+  const secStyle = { background: 'var(--texture-wood-birch)', padding: 'var(--padding-section) var(--padding-page)' };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
+  const headStyle = { textAlign: 'center', marginBottom: 'var(--gap-3xl)' };
+  const eyeStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: 'var(--tracking-widest)', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '10px' };
+  const h2Style = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-5xl)', letterSpacing: 'var(--tracking-tight)', color: 'var(--neutral-900)', lineHeight: 1 };
+  const subStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)', color: 'var(--color-text-secondary)', marginTop: '12px', lineHeight: 1.6 };
+  const gridStyle = { display: 'grid', gridTemplateColumns: '420px', justifyContent: 'center' };
+
+  return (
+    <section id="wohnungen" style={secStyle}>
+      <div style={innerStyle}>
+        <div style={headStyle}>
+          <p style={eyeStyle}>Unsere Wohnung</p>
+          <h2 style={h2Style}>Willkommen</h2>
+          <p style={subStyle}>Eine Wohnung mit allem, was du für einen schönen Aufenthalt brauchst.</p>
+        </div>
+        <div style={gridStyle}>
+          <RoomCard
+            name={room.name}
+            description={room.desc}
+            capacity={room.capacity}
+            beds={room.beds}
+            pricePerNight={room.price}
+            amenities={room.amenities}
+            imageUrl={room.img}
+            available={room.avail}
+            unitNumber={room.id}
+            onBook={() => scrollTo('kontakt')}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+Object.assign(window, { RoomsSection });
+</script>
+
+<!-- ─── Amenities ─── -->
+<script type="text/babel">
+const { IcoWifi, IcoCar, IcoKitchen, IcoBath, IcoTv, IcoBed, IcoPillow } = window;
+
+const AMENITIES = [
+  { Icon: IcoWifi,    title: 'Kostenloses WLAN',      desc: 'Schnelles Internet in allen Zimmern' },
+  { Icon: IcoCar,     title: 'Kostenloser Parkplatz', desc: 'Stellplatz direkt am Haus' },
+  { Icon: IcoKitchen, title: 'Vollküche',              desc: 'Herd, Kühlschrank, Mikrowelle' },
+  { Icon: IcoBath,    title: 'Eigenes Bad',            desc: 'Jede Wohnung mit privatem Badezimmer' },
+  { Icon: IcoTv,      title: 'Fernseher',              desc: 'Wandmontierter Flachbildfernseher' },
+  { Icon: IcoPillow,  title: 'Bettwäsche inklusive',  desc: 'Frische Bettwäsche und Handtücher' },
+];
+
+function AmenitiesSection() {
+  const sectionStyle = {
+    background: 'var(--texture-wood-birch)', padding: 'var(--padding-section) var(--padding-page)',
+  };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
+  const headStyle = { textAlign: 'center', marginBottom: 'var(--gap-3xl)' };
+  const eyeStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: 'var(--tracking-widest)', textTransform: 'uppercase', color: 'var(--wood-500)', marginBottom: '10px' };
+  const h2Style = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-5xl)', letterSpacing: '-0.02em', color: 'var(--wood-800)', lineHeight: 1 };
+  const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--gap-xl)' };
+  const itemStyle = { display: 'flex', flexDirection: 'column', gap: '12px', padding: '28px 24px', background: 'rgba(253,250,246,0.7)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--wood-200)', backdropFilter: 'blur(4px)' };
+  const iconWrap = { width: '44px', height: '44px', borderRadius: 'var(--radius-md)', background: 'var(--wood-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--wood-600)' };
+  const titleStyle = { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-xl)', color: 'var(--wood-800)', letterSpacing: '-0.01em' };
+  const descStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: 'var(--wood-600)', lineHeight: 1.5 };
+
+  return (
+    <section id="ausstattung" style={sectionStyle}>
+      <div style={innerStyle}>
+        <div style={headStyle}>
+          <p style={eyeStyle}>Ausstattung &amp; Komfort</p>
+          <h2 style={h2Style}>Alles inklusive</h2>
+        </div>
+        <div style={gridStyle}>
+          {AMENITIES.map(({ Icon, title, desc }) => (
+            <div key={title} style={itemStyle}>
+              <div style={iconWrap}><Icon s={22} /></div>
+              <div style={titleStyle}>{title}</div>
+              <div style={descStyle}>{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+Object.assign(window, { AmenitiesSection });
+</script>
+
+<!-- ─── Gallery ─── -->
+<script type="text/babel">
+const PHOTOS = [
+  { src: './assets/photos/kitchen.jpeg',         alt: 'Küche' },
+  { src: './assets/photos/bedroom-single.jpeg',  alt: 'Einzelzimmer' },
+  { src: './assets/photos/living-sofa-b.jpeg',   alt: 'Wohnzimmer' },
+  { src: './assets/photos/bedroom-twin-c.jpeg',  alt: 'Zweibettzimmer' },
+  { src: './assets/photos/bedroom-wardrobe.jpeg',alt: 'Kleiderschrank' },
+  { src: './assets/photos/bathroom-tub.jpeg',    alt: 'Badewanne' },
+];
+
+function GallerySection() {
+  const [active, setActive] = React.useState(null);
+  const sectionStyle = { background: 'var(--texture-wood-birch)', padding: 'var(--padding-section) var(--padding-page)' };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
+  const headStyle = { textAlign: 'center', marginBottom: 'var(--gap-3xl)' };
+  const eyeStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: 'var(--tracking-widest)', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '10px' };
+  const h2Style = { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 'var(--text-5xl)', letterSpacing: '-0.02em', color: 'var(--neutral-900)', lineHeight: 1 };
+  const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' };
+  const imgWrapStyle = { overflow: 'hidden', borderRadius: 'var(--radius-md)', cursor: 'pointer', position: 'relative' };
+  const imgStyle = { width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', transition: 'transform 400ms ease' };
+
+  const lightboxStyle = {
+    position: 'fixed', inset: 0, zIndex: 200,
+    background: 'rgba(10,5,2,0.92)', display: 'flex', alignItems: 'center',
+    justifyContent: 'center', cursor: 'pointer',
+  };
+
+  return (
+    <section id="galerie" style={sectionStyle}>
+      <div style={innerStyle}>
+        <div style={headStyle}>
+          <p style={eyeStyle}>Galerie</p>
+          <h2 style={h2Style}>Einblicke</h2>
+        </div>
+        <div style={gridStyle}>
+          {PHOTOS.map((p, i) => (
+            <div key={i} style={imgWrapStyle} onClick={() => setActive(p.src)}>
+              <img src={p.src} alt={p.alt} style={imgStyle} />
+            </div>
+          ))}
+        </div>
+      </div>
+      {active && (
+        <div style={lightboxStyle} onClick={() => setActive(null)}>
+          <img src={active} alt="" style={{ maxHeight: '85vh', maxWidth: '90vw', objectFit: 'contain', borderRadius: 'var(--radius-md)' }} />
+        </div>
+      )}
+    </section>
+  );
+}
+Object.assign(window, { GallerySection });
+</script>
+
+<!-- ─── Contact ─── -->
+<script type="text/babel">
+const { Button: BtnC, Input } = window.FerienhausPflugDesignSystem_14ec5f;
+const { IcoMapPin, IcoMail, IcoPhone } = window;
+
+function ContactSection() {
+  const [form, setForm] = React.useState({ name: '', email: '', phone: '', nachricht: '' });
+  const [sent, setSent] = React.useState(false);
+
+  const sectionStyle = { background: 'var(--texture-wood-birch)', padding: 'var(--padding-section) var(--padding-page)' };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' };
+  const eyeStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: 'var(--tracking-widest)', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '12px' };
+  const h2Style = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-5xl)', letterSpacing: '-0.02em', color: 'var(--neutral-900)', lineHeight: 1, marginBottom: '16px' };
+  const bodyStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)', color: 'var(--color-text-secondary)', lineHeight: 1.65, marginBottom: '36px' };
+  const formStyle = { display: 'flex', flexDirection: 'column', gap: '16px' };
+  const infoItemStyle = { display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '22px' };
+  const iconBoxStyle = { width: '40px', height: '40px', borderRadius: 'var(--radius-md)', background: 'var(--wood-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--wood-500)', flexShrink: 0, marginTop: '2px' };
+  const infoLabelStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '4px' };
+  const infoValueStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: 'var(--color-text)' };
+  const successStyle = { textAlign: 'center', padding: '40px', background: 'var(--wood-50)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--wood-200)' };
+
+  const upd = k => e => setForm(f => ({...f, [k]: e.target.value}));
+
+  return (
+    <section id="kontakt" style={sectionStyle}>
+      <div style={innerStyle}>
+        <div>
+          <p style={eyeStyle}>Direktbuchung</p>
+          <h2 style={h2Style}>Kontakt &amp; Buchung</h2>
+          <p style={bodyStyle}>Buche direkt bei uns — ohne Gebühren. Wir melden uns innerhalb von 24 Stunden bei dir.</p>
+          {sent ? (
+            <div style={successStyle}>
+              <div style={{fontFamily:'var(--font-display)',fontSize:'var(--text-3xl)',color:'var(--wood-700)',marginBottom:'8px'}}>Vielen Dank!</div>
+              <div style={{fontFamily:'var(--font-body)',fontSize:'var(--text-sm)',color:'var(--wood-600)'}}>Wir melden uns bald bei dir.</div>
+            </div>
+          ) : (
+            <div style={formStyle}>
+              <Input label="Dein Name" placeholder="Max Mustermann" value={form.name} onChange={upd('name')} required />
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px'}}>
+                <Input label="E-Mail" type="email" placeholder="max@beispiel.de" value={form.email} onChange={upd('email')} required />
+                <Input label="Telefon" type="tel" placeholder="+49 …" value={form.phone} onChange={upd('phone')} />
+              </div>
+              <div style={{display:'flex',flexDirection:'column',gap:'5px'}}>
+                <label style={{fontSize:'var(--text-xs)',fontWeight:'var(--weight-medium)',color:'var(--color-text-secondary)',letterSpacing:'var(--tracking-wider)',textTransform:'uppercase',fontFamily:'var(--font-body)'}}>Nachricht</label>
+                <textarea value={form.nachricht} onChange={upd('nachricht')} placeholder="Gewünschte Wohnung, Zeitraum, Personenanzahl …" rows={4}
+                  style={{fontFamily:'var(--font-body)',fontSize:'var(--text-sm)',color:'var(--color-text)',background:'var(--color-surface)',border:'1.5px solid var(--color-border)',borderRadius:'var(--radius-sm)',padding:'10px 14px',outline:'none',resize:'vertical',width:'100%'}} />
+              </div>
+              <BtnC variant="primary" size="lg" fullWidth onClick={() => setSent(true)}>Anfrage senden</BtnC>
+            </div>
+          )}
+        </div>
+        <div>
+          <div style={{...h2Style, fontSize:'var(--text-3xl)',marginBottom:'32px'}}>So erreichst du uns</div>
+          {[
+            { Icon: IcoMapPin, label: 'Adresse', value: 'Lederecke 10\n36219 Cornberg-Rockensüss' },
+            { Icon: IcoPhone,  label: 'Telefon', value: '+49 160 3889917' },
+            { Icon: IcoMail,   label: 'E-Mail',  value: 'folgt in Kürze' },
+          ].map(({ Icon, label, value }) => (
+            <div key={label} style={infoItemStyle}>
+              <div style={iconBoxStyle}><Icon s={18}/></div>
+              <div>
+                <div style={infoLabelStyle}>{label}</div>
+                <div style={{...infoValueStyle, whiteSpace:'pre-line'}}>{value}</div>
+              </div>
+            </div>
+          ))}
+          <div style={{marginTop:'32px',borderRadius:'var(--radius-lg)',overflow:'hidden',aspectRatio:'4/3',background:'var(--wood-100)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid var(--wood-200)'}}>
+            <img src="./assets/photos/living-tv.jpeg" alt="Wohnzimmer" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+Object.assign(window, { ContactSection });
+</script>
+
+<!-- ─── Button Style Override ─── -->
+
+
+<!-- ─── Footer ─── -->
+<script type="text/babel">
+function SiteFooter({ scrollTo }) {
+  const footerStyle = { background: 'var(--texture-wood-oak)', backgroundSize: 'cover', backgroundAttachment: 'fixed', padding: '56px var(--padding-page) 32px', borderTop: '1px solid rgba(0,0,0,0.1)' };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
+  const topStyle = { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', paddingBottom: '40px', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '28px' };
+  const logoStyle = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: '1.8rem', color: '#faf6f0', letterSpacing: '0.02em', marginBottom: '12px' };
+  const taglineStyle = { fontFamily: 'var(--font-script)', fontSize: '1.1rem', color: '#e8dcc8', marginBottom: '16px' };
+  const descStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#d9cdb8', lineHeight: 1.65, maxWidth: '300px' };
+  const colHeadStyle = { fontFamily: 'var(--font-body)', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#e8dcc8', marginBottom: '16px' };
+  const linkStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#d9cdb8', lineHeight: 2.2, cursor: 'pointer', display: 'block', border: 'none', background: 'none', textAlign: 'left', padding: 0 };
+  const bottomStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '12px', color: '#c9bda8' };
+
+  const nav1 = [['Wohnung','wohnungen'],['Ausstattung','ausstattung'],['Galerie','galerie'],['Kontakt','kontakt']];
+
+  return (
+    <footer style={footerStyle}>
+      <div style={innerStyle}>
+        <div style={topStyle}>
+          <div>
+            <div style={logoStyle}>Ferienhaus Pflug</div>
+            <div style={taglineStyle}>Ihr Zuhause auf Zeit</div>
+            <p style={descStyle}>Gemütliche Wohnung mit Holzcharme und modernem Komfort — direkt buchen, ohne Gebühren.</p>
+          </div>
+          <div>
+            <div style={colHeadStyle}>Navigation</div>
+            {nav1.map(([l,id]) => <button key={id} style={linkStyle} onClick={() => scrollTo(id)}>{l}</button>)}
+          </div>
+          <div>
+            <div style={colHeadStyle}>Kontakt</div>
+            <span style={{...linkStyle, cursor:'default'}}>+49 160 3889917</span>
+            <span style={{...linkStyle, cursor:'default', opacity:0.5}}>E-Mail folgt in Kürze</span>
+            <span style={{...linkStyle, cursor:'default'}}>Lederecke 10, 36219 Cornberg-Rockensüss</span>
+          </div>
+        </div>
+        <div style={bottomStyle}>
+          <span>© 2025 Ferienhaus Pflug. Alle Rechte vorbehalten.</span>
+          <span>Impressum · Datenschutz</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+Object.assign(window, { SiteFooter });
+</script>
+
+<!-- ─── App ─── -->
+<script type="text/babel">
+const { SiteHeader, SiteHero, RoomsSection, AmenitiesSection, GallerySection, ContactSection, SiteFooter } = window;
+
+function App() {
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const screen = document.getElementById('bezel-screen');
+    if (screen && screen.scrollHeight > screen.clientHeight) {
+      screen.scrollTo({ top: el.offsetTop - 68, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: el.offsetTop - 68, behavior: 'smooth' });
+    }
+  };
+  return (
+    <>
+      <SiteHeader scrollTo={scrollTo} />
+      <SiteHero scrollTo={scrollTo} />
+      <RoomsSection scrollTo={scrollTo} />
+      <AmenitiesSection />
+      <GallerySection />
+      <ContactSection />
+      <SiteFooter scrollTo={scrollTo} />
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+
+</body>
+</html>
