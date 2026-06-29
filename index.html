@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ferienhaus Pflug</title>
+<title>Ferienhaus Cornberg</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Dancing+Script:wght@400;600&display=swap">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -527,7 +527,7 @@ function SiteHeader({ scrollTo }) {
     <header style={headerStyle}>
       <div style={innerStyle}>
         <span style={logoStyle} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Ferienhaus Pflug
+          Ferienhaus Cornberg
         </span>
         {!isMobile && (
           <nav style={navStyle}>
@@ -636,7 +636,7 @@ function SiteHero({ scrollTo }) {
       <div style={overlayStyle}></div>
       <div style={contentStyle}>
         <span style={eyebrowStyle}>Ihr Zuhause auf Zeit</span>
-        <h1 style={headlineStyle}>Ferienhaus Pflug</h1>
+        <h1 style={headlineStyle}>Ferienhaus Cornberg</h1>
         <p style={subtitleStyle}>Gemütliche Zimmer und Wohnung in ruhiger Lage. Modern eingerichtet, mit allem was du brauchst.</p>
         <div style={widgetStyle}>
           <div style={fieldStyle}>
@@ -671,7 +671,7 @@ const { RoomCard } = window.FerienhausPflugDesignSystem_14ec5f;
 
 const room = {
   id: 1,
-  name: 'Ferienhaus Pflug',
+  name: 'Ferienhaus Cornberg',
   desc: 'Gem\u00FCtliche Wohnung mit Holzb\u00F6den, eigenem Bad, vollausgestatteter K\u00FCche und einem Wohnbereich mit Sofa.',
   capacity: 4,
   beds: 2,
@@ -725,7 +725,7 @@ const { IcoWifi, IcoCar, IcoKitchen, IcoBath, IcoTv, IcoBed, IcoPillow } = windo
 
 const AMENITIES = [
   { Icon: IcoWifi,    title: 'Kostenloses WLAN',      desc: 'Schnelles Internet in allen Zimmern' },
-  { Icon: IcoCar,     title: 'Kostenloser Parkplatz', desc: 'Stellplatz direkt am Haus' },
+  { Icon: IcoCar,     title: 'Kostenloser Parkplatz', desc: 'Stellplatz direkt am Haus · überwacht · Motorradgarage vorhanden' },
   { Icon: IcoKitchen, title: 'Vollküche',              desc: 'Herd, Kühlschrank, Mikrowelle' },
   { Icon: IcoBath,    title: 'Eigenes Bad',            desc: 'Jede Wohnung mit privatem Badezimmer' },
   { Icon: IcoTv,      title: 'Fernseher',              desc: 'Wandmontierter Flachbildfernseher' },
@@ -879,7 +879,7 @@ function ContactSection() {
           {[
             { Icon: IcoMapPin, label: 'Adresse', value: 'Lederecke 10\n36219 Cornberg-Rockensüss' },
             { Icon: IcoPhone,  label: 'Telefon', value: '+49 160 3889917' },
-            { Icon: IcoMail,   label: 'E-Mail',  value: 'folgt in Kürze' },
+            { Icon: IcoMail,   label: 'E-Mail',  value: 'info@ferienhaus-cornberg.de' },
           ].map(({ Icon, label, value }) => (
             <div key={label} style={infoItemStyle}>
               <div style={iconBoxStyle}><Icon s={18}/></div>
@@ -906,15 +906,15 @@ Object.assign(window, { ContactSection });
 <!-- ─── Footer ─── -->
 <script type="text/babel">
 function SiteFooter({ scrollTo }) {
-  const footerStyle = { background: 'var(--texture-wood-oak)', backgroundSize: 'cover', backgroundAttachment: 'fixed', padding: '56px var(--padding-page) 32px', borderTop: '1px solid rgba(0,0,0,0.1)' };
+  const footerStyle = { background: 'var(--texture-wood-oak)', backgroundSize: 'cover', backgroundAttachment: 'fixed', padding: '56px var(--padding-page) 32px', borderTop: '1px solid rgba(0,0,0,0.1)', position: 'relative' };
   const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
   const topStyle = { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', paddingBottom: '40px', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '28px' };
-  const logoStyle = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: '1.8rem', color: '#faf6f0', letterSpacing: '0.02em', marginBottom: '12px' };
-  const taglineStyle = { fontFamily: 'var(--font-script)', fontSize: '1.1rem', color: '#e8dcc8', marginBottom: '16px' };
-  const descStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#d9cdb8', lineHeight: 1.65, maxWidth: '300px' };
-  const colHeadStyle = { fontFamily: 'var(--font-body)', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#e8dcc8', marginBottom: '16px' };
-  const linkStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#d9cdb8', lineHeight: 2.2, cursor: 'pointer', display: 'block', border: 'none', background: 'none', textAlign: 'left', padding: 0 };
-  const bottomStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '12px', color: '#c9bda8' };
+  const logoStyle = { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: '1.8rem', color: '#ffffff', letterSpacing: '0.02em', marginBottom: '12px' };
+  const taglineStyle = { fontFamily: 'var(--font-script)', fontSize: '1.1rem', color: '#ffffff', marginBottom: '16px' };
+  const descStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#ffffff', lineHeight: 1.65, maxWidth: '300px' };
+  const colHeadStyle = { fontFamily: 'var(--font-body)', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#ffffff', marginBottom: '16px' };
+  const linkStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', color: '#ffffff', lineHeight: 2.2, cursor: 'pointer', display: 'block', border: 'none', background: 'none', textAlign: 'left', padding: 0 };
+  const bottomStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '12px', color: '#ffffff' };
 
   const nav1 = [['Wohnung','wohnungen'],['Ausstattung','ausstattung'],['Galerie','galerie'],['Kontakt','kontakt']];
 
@@ -923,7 +923,7 @@ function SiteFooter({ scrollTo }) {
       <div style={innerStyle}>
         <div style={topStyle}>
           <div>
-            <div style={logoStyle}>Ferienhaus Pflug</div>
+            <div style={logoStyle}>Ferienhaus Cornberg</div>
             <div style={taglineStyle}>Ihr Zuhause auf Zeit</div>
             <p style={descStyle}>Gemütliche Wohnung mit Holzcharme und modernem Komfort — direkt buchen, ohne Gebühren.</p>
           </div>
@@ -934,12 +934,12 @@ function SiteFooter({ scrollTo }) {
           <div>
             <div style={colHeadStyle}>Kontakt</div>
             <span style={{...linkStyle, cursor:'default'}}>+49 160 3889917</span>
-            <span style={{...linkStyle, cursor:'default', opacity:0.5}}>E-Mail folgt in Kürze</span>
+            <span style={{...linkStyle, cursor:'default'}}>info@ferienhaus-cornberg.de</span>
             <span style={{...linkStyle, cursor:'default'}}>Lederecke 10, 36219 Cornberg-Rockensüss</span>
           </div>
         </div>
         <div style={bottomStyle}>
-          <span>© 2025 Ferienhaus Pflug. Alle Rechte vorbehalten.</span>
+          <span>© 2025 Ferienhaus Cornberg. Alle Rechte vorbehalten.</span>
           <span>Impressum · Datenschutz</span>
         </div>
       </div>
