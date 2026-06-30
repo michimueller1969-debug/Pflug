@@ -584,7 +584,7 @@ function SiteHero({ scrollTo }) {
   };
   const bgStyle = {
     position: 'absolute', inset: 0,
-    backgroundImage: 'url(./assets/photos/kitchen.jpeg)',
+    backgroundImage: 'url(./assets/photos/living-dining-b.jpeg)',
     backgroundSize: 'cover', backgroundPosition: 'center 40%',
     transform: 'scale(1.04)',
   };
@@ -708,7 +708,6 @@ function RoomsSection({ scrollTo }) {
             amenities={room.amenities}
             imageUrl={room.img}
             available={room.avail}
-            unitNumber={room.id}
             onBook={() => scrollTo('kontakt')}
           />
         </div>
@@ -773,11 +772,17 @@ Object.assign(window, { AmenitiesSection });
 <script type="text/babel">
 const PHOTOS = [
   { src: './assets/photos/kitchen.jpeg',         alt: 'Küche' },
+  { src: './assets/photos/living-dining-b.jpeg', alt: 'Wohnzimmer mit Esstisch' },
+  { src: './assets/photos/living-sofa-c.jpeg',   alt: 'Wohnzimmer Sofa' },
+  { src: './assets/photos/living-dining.jpeg',   alt: 'Esszimmer mit TV' },
   { src: './assets/photos/bedroom-single.jpeg',  alt: 'Einzelzimmer' },
+  { src: './assets/photos/bedroom-twin-e.jpeg',  alt: 'Zweibettzimmer' },
+  { src: './assets/photos/bedroom-twin-d.jpeg',  alt: 'Zweibettzimmer' },
   { src: './assets/photos/living-sofa-b.jpeg',   alt: 'Wohnzimmer' },
   { src: './assets/photos/bedroom-twin-c.jpeg',  alt: 'Zweibettzimmer' },
   { src: './assets/photos/bedroom-wardrobe.jpeg',alt: 'Kleiderschrank' },
   { src: './assets/photos/bathroom-tub.jpeg',    alt: 'Badewanne' },
+  { src: './assets/photos/bathroom-wc2.jpeg',    alt: 'WC' },
 ];
 
 function GallerySection() {
@@ -889,8 +894,14 @@ function ContactSection() {
               </div>
             </div>
           ))}
-          <div style={{marginTop:'32px',borderRadius:'var(--radius-lg)',overflow:'hidden',aspectRatio:'4/3',background:'var(--wood-100)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid var(--wood-200)'}}>
-            <img src="./assets/photos/living-tv.jpeg" alt="Wohnzimmer" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+          <div style={{marginTop:'32px',borderRadius:'var(--radius-lg)',overflow:'hidden',height:'261px',border:'1px solid var(--wood-200)'}}>
+            <iframe
+              src="https://maps.google.com/maps?q=Lederecke+10,+36219+Cornberg-Rockensüss,+Deutschland&output=embed&z=15&hl=de"
+              width="100%" height="100%" style={{border:0,display:'block'}}
+              allowFullScreen="" loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Karte Ferienhaus Cornberg"
+            ></iframe>
           </div>
         </div>
       </div>
