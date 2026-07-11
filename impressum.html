@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum – Ferienhaus Cornberg</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Dancing+Script:wght@400;600&display=swap">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  :root {
+    --wood-50:  oklch(96% 0.025 78);
+    --wood-100: oklch(91% 0.055 76);
+    --wood-150: oklch(88% 0.070 75);
+    --wood-200: oklch(84% 0.085 73);
+    --wood-300: oklch(74% 0.110 69);
+    --wood-400: oklch(63% 0.110 63);
+    --wood-500: oklch(52% 0.095 56);
+    --wood-600: oklch(42% 0.085 50);
+    --wood-700: oklch(33% 0.070 45);
+    --wood-800: oklch(24% 0.050 42);
+    --wood-900: oklch(16% 0.035 38);
+
+    --neutral-50:  oklch(98.5% 0.008 82);
+    --neutral-100: oklch(95.5% 0.018 80);
+    --neutral-200: oklch(90%   0.030 76);
+    --neutral-300: oklch(82%   0.040 73);
+    --neutral-400: oklch(70%   0.040 70);
+    --neutral-500: oklch(57%   0.035 67);
+    --neutral-600: oklch(44%   0.030 63);
+    --neutral-700: oklch(34%   0.025 58);
+    --neutral-800: oklch(24%   0.020 54);
+    --neutral-900: oklch(14%   0.015 50);
+
+    --olive-100: oklch(86%  0.065 122);
+    --olive-300: oklch(72%  0.090 120);
+    --olive-500: oklch(53%  0.095 116);
+    --olive-700: oklch(38%  0.078 112);
+
+    --color-primary:        var(--wood-400);
+    --color-primary-hover:  var(--wood-500);
+    --color-bg:             var(--neutral-100);
+    --color-surface:        var(--neutral-50);
+    --color-text:           var(--neutral-900);
+    --color-text-secondary: var(--neutral-600);
+    --color-text-muted:     var(--neutral-500);
+    --color-border:         var(--neutral-300);
+    --color-border-light:   var(--neutral-200);
+
+    --font-display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+    --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-script:  'Dancing Script', cursive;
+
+    --text-xs:   0.75rem;
+    --text-sm:   0.875rem;
+    --text-base: 1rem;
+    --text-lg:   1.125rem;
+    --text-xl:   1.25rem;
+    --text-2xl:  1.5rem;
+    --text-3xl:  1.875rem;
+    --text-4xl:  2.25rem;
+    --text-5xl:  3rem;
+
+    --weight-light:    300;
+    --weight-normal:   400;
+    --weight-medium:   500;
+    --weight-semibold: 600;
+
+    --leading-tight:   1.15;
+    --leading-normal:  1.55;
+    --leading-relaxed: 1.7;
+
+    --tracking-tight:   -0.01em;
+    --tracking-wide:     0.04em;
+    --tracking-wider:    0.08em;
+    --tracking-widest:   0.18em;
+
+    --padding-page:    clamp(1.5rem, 5vw, 4rem);
+    --container-xl:    1280px;
+
+    --radius-sm:  4px;
+    --radius-md:  6px;
+    --radius-lg:  10px;
+
+    --shadow-sm: 0 2px 8px rgba(45,25,10,0.09), 0 1px 3px rgba(45,25,10,0.06);
+
+    --texture-wood-birch:
+      repeating-linear-gradient(87.5deg, transparent 0, transparent 2px, rgba(180,140,70,0.05) 2px, rgba(180,140,70,0.05) 3px, transparent 3px, transparent 9px, rgba(160,120,55,0.03) 9px, rgba(160,120,55,0.03) 10px),
+      repeating-linear-gradient(92deg, transparent 0, transparent 18px, rgba(140,100,40,0.02) 18px, rgba(140,100,40,0.02) 19px),
+      linear-gradient(180deg, var(--wood-50) 0%, var(--wood-100) 45%, var(--wood-50) 100%);
+
+    --texture-wood-oak:
+      repeating-linear-gradient(87deg, transparent 0, transparent 2px, rgba(110,70,20,0.18) 2px, rgba(110,70,20,0.18) 3px, transparent 3px, transparent 8px, rgba(90,55,12,0.12) 8px, rgba(90,55,12,0.12) 9px, transparent 9px, transparent 14px, rgba(70,40,10,0.08) 14px, rgba(70,40,10,0.08) 15px),
+      repeating-linear-gradient(92.5deg, transparent 0, transparent 18px, rgba(80,48,10,0.14) 18px, rgba(80,48,10,0.14) 19px, transparent 19px, transparent 45px, rgba(100,60,15,0.08) 45px, rgba(100,60,15,0.08) 46px),
+      repeating-linear-gradient(88.5deg, transparent 0, transparent 35px, rgba(60,35,8,0.06) 35px, rgba(60,35,8,0.06) 37px),
+      linear-gradient(180deg, var(--wood-300) 0%, var(--wood-400) 55%, var(--wood-300) 100%);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text);
+    background: var(--texture-wood-birch);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; }
+  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; text-wrap: pretty; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-light);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; border: none; background: none; font: inherit; }
+  ul, ol { list-style: none; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+/* ── Header ── */
+function ImpressumHeader() {
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+
+  return (
+    <header style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      background: scrolled ? 'rgba(253,250,246,0.97)' : 'rgba(253,250,246,0.85)',
+      backdropFilter: 'blur(12px)',
+      boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
+      borderBottom: '1px solid var(--neutral-200)',
+      transition: 'box-shadow 300ms ease',
+    }}>
+      <div style={{
+        maxWidth: 'var(--container-xl)', margin: '0 auto',
+        padding: '0 var(--padding-page)',
+        height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <a href="index.html" style={{
+          fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '1.5rem',
+          letterSpacing: '0.02em', color: 'var(--wood-800)',
+          userSelect: 'none',
+        }}>
+          Ferienhaus Cornberg
+        </a>
+        <a href="index.html" style={{
+          fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)',
+          fontWeight: 'var(--weight-medium)', letterSpacing: 'var(--tracking-wider)',
+          textTransform: 'uppercase', color: 'var(--neutral-600)',
+          display: 'flex', alignItems: 'center', gap: '6px',
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/>
+          </svg>
+          Zurück
+        </a>
+      </div>
+    </header>
+  );
+}
+
+/* ── Main Content ── */
+function ImpressumContent() {
+  const wrapStyle = {
+    maxWidth: '760px', margin: '0 auto',
+    padding: '140px var(--padding-page) 96px',
+  };
+
+  const eyeStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)',
+    letterSpacing: 'var(--tracking-widest)', textTransform: 'uppercase',
+    color: 'var(--color-primary)', marginBottom: '12px',
+  };
+  const h1Style = {
+    fontFamily: 'var(--font-display)', fontWeight: 300,
+    fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.02em',
+    color: 'var(--wood-800)', lineHeight: 1, marginBottom: '48px',
+  };
+
+  const sectionStyle = {
+    marginBottom: '40px',
+    paddingBottom: '40px',
+    borderBottom: '1px solid var(--neutral-200)',
+  };
+  const sectionLastStyle = { marginBottom: 0 };
+  const h2Style = {
+    fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '1.5rem',
+    color: 'var(--wood-800)', letterSpacing: '-0.01em',
+    marginBottom: '16px',
+  };
+  const labelStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)',
+    letterSpacing: '0.1em', textTransform: 'uppercase',
+    color: 'var(--color-text-muted)', marginBottom: '4px',
+  };
+  const valueStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)',
+    color: 'var(--color-text)', lineHeight: 1.7,
+  };
+  const noteStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)',
+    color: 'var(--color-text-secondary)', lineHeight: 1.7,
+  };
+
+  const row = (label, value, isEmail) => (
+    <div style={{ marginBottom: '18px' }}>
+      <div style={labelStyle}>{label}</div>
+      <div style={valueStyle}>
+        {isEmail
+          ? <a href={`mailto:${value}`} style={{ color: 'var(--color-primary)' }}>{value}</a>
+          : value}
+      </div>
+    </div>
+  );
+
+  return (
+    <main>
+      <div style={wrapStyle}>
+        <p style={eyeStyle}>Rechtliches</p>
+        <h1 style={h1Style}>Impressum</h1>
+
+        {/* Angaben */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>Angaben gemäß § 5 TMG</h2>
+          {row('Name', '[Vorname] Pflug')}
+          {row('Adresse', 'Lederecke 10\n36219 Cornberg-Rockensüss', false)}
+        </div>
+
+        {/* Kontakt */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>Kontakt</h2>
+          {row('Telefon', '+49 160 3889917')}
+          <div style={{ marginBottom: '18px' }}>
+            <div style={labelStyle}>E-Mail</div>
+            <div style={{ ...valueStyle, color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
+              folgt in Kürze
+            </div>
+          </div>
+        </div>
+
+        {/* Verantwortlich */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+          {row('Name', '[Vorname] Pflug')}
+          {row('Adresse', 'Lederecke 10\n36219 Cornberg-Rockensüss', false)}
+        </div>
+
+        {/* Haftungsausschluss */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>Haftungsausschluss</h2>
+          <p style={{ ...noteStyle, marginBottom: '16px' }}>
+            <strong style={{ fontWeight: 'var(--weight-medium)', color: 'var(--color-text)' }}>Haftung für Inhalte</strong><br />
+            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+          </p>
+          <p style={noteStyle}>
+            <strong style={{ fontWeight: 'var(--weight-medium)', color: 'var(--color-text)' }}>Haftung für Links</strong><br />
+            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          </p>
+        </div>
+
+        {/* Urheberrecht */}
+        <div style={sectionLastStyle}>
+          <h2 style={h2Style}>Urheberrecht</h2>
+          <p style={noteStyle}>
+            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+/* ── Footer ── */
+function ImpressumFooter() {
+  const footerStyle = {
+    background: 'var(--texture-wood-oak)',
+    padding: '56px var(--padding-page) 32px',
+    borderTop: '1px solid rgba(0,0,0,0.1)',
+  };
+  const innerStyle = { maxWidth: 'var(--container-xl)', margin: '0 auto' };
+  const topStyle = {
+    display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px',
+    paddingBottom: '40px', borderBottom: '1px solid rgba(255,255,255,0.1)',
+    marginBottom: '28px',
+  };
+  const logoStyle = {
+    fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: '1.8rem',
+    color: '#ffffff', letterSpacing: '0.02em', marginBottom: '12px',
+  };
+  const taglineStyle = {
+    fontFamily: 'var(--font-script)', fontSize: '1.1rem',
+    color: '#ffffff', marginBottom: '16px',
+  };
+  const descStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)',
+    color: '#ffffff', lineHeight: 1.65, maxWidth: '300px',
+  };
+  const colHeadStyle = {
+    fontFamily: 'var(--font-body)', fontSize: '9px',
+    letterSpacing: '0.16em', textTransform: 'uppercase',
+    color: '#ffffff', marginBottom: '16px',
+  };
+  const linkStyle = {
+    fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)',
+    color: '#ffffff', lineHeight: 2.2, display: 'block',
+  };
+  const bottomStyle = {
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    fontFamily: 'var(--font-body)', fontSize: '12px', color: '#ffffff',
+    flexWrap: 'wrap', gap: '8px',
+  };
+
+  return (
+    <footer style={footerStyle}>
+      <div style={innerStyle}>
+        <div style={topStyle}>
+          <div>
+            <div style={logoStyle}>Ferienhaus Cornberg</div>
+            <div style={taglineStyle}>Ihr Zuhause auf Zeit</div>
+            <p style={descStyle}>Gemütliche Wohnung mit Holzcharme und modernem Komfort — direkt buchen, ohne Gebühren.</p>
+          </div>
+          <div>
+            <div style={colHeadStyle}>Navigation</div>
+            {[['Wohnung','#wohnungen'],['Ausstattung','#ausstattung'],['Galerie','#galerie'],['Kontakt','#kontakt']].map(([l, href]) => (
+              <a key={l} href={'index.html' + href} style={linkStyle}>{l}</a>
+            ))}
+          </div>
+          <div>
+            <div style={colHeadStyle}>Kontakt</div>
+            <span style={{ ...linkStyle, cursor: 'default' }}>+49 160 3889917</span>
+            <span style={{ ...linkStyle, cursor: 'default', fontStyle: 'italic', opacity: 0.7 }}>E-Mail folgt in Kürze</span>
+            <span style={{ ...linkStyle, cursor: 'default' }}>Lederecke 10, 36219 Cornberg-Rockensüss</span>
+          </div>
+        </div>
+        <div style={bottomStyle}>
+          <span>© 2025 Ferienhaus Cornberg. Alle Rechte vorbehalten.</span>
+          <span>
+            <a href="impressum.html" style={{ color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', opacity: 0.9 }}>Impressum</a>
+            {' · '}
+            <span style={{ opacity: 0.6 }}>Datenschutz</span>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ── App ── */
+function App() {
+  return (
+    <>
+      <ImpressumHeader />
+      <ImpressumContent />
+      <ImpressumFooter />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
