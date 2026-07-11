@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Impressum – Ferienhaus Cornberg</title>
+<title>Datenschutzerklärung – Ferienhaus Cornberg</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Dancing+Script:wght@400;600&display=swap">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -232,47 +232,65 @@ function ImpressumContent() {
     <main>
       <div style={wrapStyle}>
         <p style={eyeStyle}>Rechtliches</p>
-        <h1 style={h1Style}>Impressum</h1>
+        <h1 style={h1Style}>Datenschutzerklärung</h1>
 
-        {/* Angaben */}
+        {/* 1. Verantwortlicher */}
         <div style={sectionStyle}>
-          <h2 style={h2Style}>Angaben gemäß § 5 TMG</h2>
+          <h2 style={h2Style}>1. Verantwortlicher</h2>
+          <p style={{ ...noteStyle, marginBottom: '12px' }}>
+            Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+          </p>
           {row('Name', 'Immobiliengemeinschaft Pflug & Krapf')}
           {row('Adresse', 'Stadtweg 6, 36179 Bebra', false)}
-        </div>
-
-        {/* Kontakt */}
-        <div style={sectionStyle}>
-          <h2 style={h2Style}>Kontakt</h2>
           {row('Telefon', '+49 160 3889917')}
           {row('E-Mail', 'info@ferienhaus-cornberg.de', true)}
         </div>
 
-        {/* Verantwortlich */}
+        {/* 2. Allgemeines */}
         <div style={sectionStyle}>
-          <h2 style={h2Style}>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-          {row('Name', 'Immobiliengemeinschaft Pflug & Krapf')}
-          {row('Adresse', 'Stadtweg 6\n36179 Bebra', false)}
-        </div>
-
-        {/* Haftungsausschluss */}
-        <div style={sectionStyle}>
-          <h2 style={h2Style}>Haftungsausschluss</h2>
-          <p style={{ ...noteStyle, marginBottom: '16px' }}>
-            <strong style={{ fontWeight: 'var(--weight-medium)', color: 'var(--color-text)' }}>Haftung für Inhalte</strong><br />
-            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-          </p>
+          <h2 style={h2Style}>2. Allgemeine Hinweise</h2>
           <p style={noteStyle}>
-            <strong style={{ fontWeight: 'var(--weight-medium)', color: 'var(--color-text)' }}>Haftung für Links</strong><br />
-            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+            Der Schutz deiner persönlichen Daten ist uns ein wichtiges Anliegen. Wir verarbeiten deine Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TDDDG). In dieser Datenschutzerklärung informieren wir dich über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
           </p>
         </div>
 
-        {/* Urheberrecht */}
+        {/* 3. Hosting */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>3. Hosting</h2>
+          <p style={noteStyle}>
+            Diese Website wird bei der STRATO AG (Otto-Ostrowski-Straße 7, 10249 Berlin) gehostet. Beim Aufruf der Website werden durch den Anbieter automatisch technische Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite, verwendeter Browser) in sogenannten Server-Logfiles erfasst. Diese Verarbeitung erfolgt zur Gewährleistung eines sicheren und stabilen Betriebs der Website (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO.
+          </p>
+        </div>
+
+        {/* 4. Kontaktaufnahme */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>4. Kontaktaufnahme &amp; Buchungsanfrage</h2>
+          <p style={noteStyle}>
+            Wenn du über das Kontaktformular oder die Buchungsanfrage mit uns Kontakt aufnimmst, öffnet sich dein E-Mail-Programm mit den von dir eingegebenen Angaben (Name, E-Mail-Adresse, Telefonnummer, Nachricht sowie ggf. Reisezeitraum und Personenzahl). Diese Daten werden erst mit dem Versand deiner E-Mail an uns übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet (Art. 6 Abs. 1 lit. b DSGVO). Es findet keine automatische Speicherung auf dieser Website statt. Wir bewahren deine Anfrage nur so lange auf, wie es für die Bearbeitung erforderlich ist.
+          </p>
+        </div>
+
+        {/* 5. Google Maps */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>5. Google Maps</h2>
+          <p style={noteStyle}>
+            Zur Darstellung unseres Standorts binden wir Kartenmaterial von Google Maps ein (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Laden der Karte kann Google deine IP-Adresse verarbeiten und Daten in die USA übertragen. Die Nutzung erfolgt im Interesse einer ansprechenden Darstellung und leichten Auffindbarkeit unseres Angebots (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen findest du in der Datenschutzerklärung von Google unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style={{ color: 'var(--color-primary)' }}>policies.google.com/privacy</a>.
+          </p>
+        </div>
+
+        {/* 6. Keine Cookies */}
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>6. Cookies &amp; Tracking</h2>
+          <p style={noteStyle}>
+            Diese Website setzt keine eigenen Cookies und verwendet keine Analyse- oder Tracking-Dienste. Lediglich technisch notwendige Daten zur Auslieferung der Seite werden – wie oben beschrieben – durch den Hosting-Anbieter verarbeitet.
+          </p>
+        </div>
+
+        {/* 7. Rechte */}
         <div style={sectionLastStyle}>
-          <h2 style={h2Style}>Urheberrecht</h2>
+          <h2 style={h2Style}>7. Deine Rechte</h2>
           <p style={noteStyle}>
-            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+            Dir stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch zu. Wenn du glaubst, dass die Verarbeitung deiner Daten gegen das Datenschutzrecht verstößt, kannst du dich bei der zuständigen Aufsichtsbehörde beschweren. Für Anfragen zu deinen Daten erreichst du uns jederzeit unter <a href="mailto:info@ferienhaus-cornberg.de" style={{ color: 'var(--color-primary)' }}>info@ferienhaus-cornberg.de</a>.
           </p>
         </div>
       </div>
@@ -347,7 +365,7 @@ function ImpressumFooter() {
           <span>
             <a href="impressum.html" style={{ color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', opacity: 0.9 }}>Impressum</a>
             {' · '}
-            <a href="datenschutz.html" style={{ color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', opacity: 0.9 }}>Datenschutz</a>
+            <span style={{ opacity: 0.9 }}>Datenschutz</span>
           </span>
         </div>
       </div>

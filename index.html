@@ -416,6 +416,14 @@
       padding-left: 20px !important;
       padding-right: 20px !important;
     }
+    footer [style*="grid-template-columns"] {
+      gap: 32px !important;
+    }
+    footer > div > div:last-child {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+    }
   }
 </style>
 </head>
@@ -503,7 +511,9 @@ function SiteHeader({ scrollTo }) {
   const logoStyle = {
     fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '1.5rem',
     letterSpacing: '0.02em', color: scrolled ? 'var(--wood-800)' : 'white',
-    cursor: 'pointer', userSelect: 'none', transition: 'color 300ms',
+    cursor: 'pointer', userSelect: 'none', transition: 'color 300ms, opacity 300ms',
+    opacity: (isMobile && !scrolled) ? 0 : 1,
+    pointerEvents: (isMobile && !scrolled) ? 'none' : 'auto',
   };
   const navStyle = {
     display: 'flex', gap: 'var(--gap-xl)', alignItems: 'center',
@@ -994,7 +1004,11 @@ function SiteFooter({ scrollTo }) {
         </div>
         <div style={bottomStyle}>
           <span>© 2025 Ferienhaus Cornberg. Alle Rechte vorbehalten.</span>
-          <span>Impressum · Datenschutz</span>
+          <span>
+            <a href="impressum.html" style={{color:'inherit', textDecoration:'underline', textUnderlineOffset:'3px'}}>Impressum</a>
+            {' · '}
+            <a href="datenschutz.html" style={{color:'inherit', textDecoration:'underline', textUnderlineOffset:'3px'}}>Datenschutz</a>
+          </span>
         </div>
       </div>
     </footer>
