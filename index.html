@@ -703,9 +703,10 @@ const room = {
   id: 1,
   name: 'Ferienhaus Cornberg',
   desc: 'Gem\u00FCtliche Wohnung mit Holzb\u00F6den, eigenem Bad, vollausgestatteter K\u00FCche und einem Wohnbereich mit Sofa.',
-  capacity: 4,
-  beds: 2,
-  price: 65,
+  capacity: 3,
+  bedrooms: 3,
+  beds: 5,
+  price: 100,
   img: './assets/photos/bedroom-twin-c.jpeg',
   amenities: ['WLAN', 'K\u00FCche', 'Bad', 'TV', 'Parkplatz'],
   avail: true,
@@ -732,7 +733,7 @@ function RoomsSection({ scrollTo }) {
           <RoomCard
             name={room.name}
             description={room.desc}
-            capacity={room.capacity}
+            bedrooms={room.bedrooms}
             beds={room.beds}
             pricePerNight={room.price}
             amenities={room.amenities}
